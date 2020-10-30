@@ -1,4 +1,4 @@
-setwd("/Users/Ege/Google Drive/ABROAD/University of Warsaw/Free Works/nieruch/sahibinden")
+setwd("...") # set your working directory
 options(warn=-1)
 Sys.setlocale("LC_ALL", 'en_US.UTF-8')
 
