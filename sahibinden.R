@@ -1,9 +1,10 @@
 start_ <- Sys.time()
-setwd("/Users/Ege/Google Drive/ABROAD/University of Warsaw/Free Works/nieruch/sahibinden")
-source("functions.R")
 
-brand <- "Honda"
-model <- "Accord"
+setwd("...") # set your working directory
+source("functions.R") # call the functions with functions.R file
+
+brand <- "Hyundai" # add brand
+model <- "Elantra" # add model
 
 
 url <- paste0("https://www.sahibinden.com/",tolower(brand),"-",tolower(model),"?viewType=Classic&pagingSize=50")
@@ -37,6 +38,8 @@ df_ <- df
 
 
 # late pages --------------------------------------------------------------
+
+max_page <- ifelse(max_page >= 20, 20, max_page)
 
 for(i in 2:max_page){
   url[i] <- paste0("https://www.sahibinden.com/",tolower(brand),"-",tolower(model),"?viewType=Classic&pagingOffset=",50*(i-1),"&pagingSize=50")
@@ -82,9 +85,9 @@ for(i in 1:length(url)){
 dt <- dplyr::data_frame(df_)
 dt <- dt[!duplicated(dt),]
 
+dt_out <- as.data.frame(dt)
+
+write.table(file=paste0(tolower(model),".csv"), dt_out, sep = ";", quote = FALSE)
+
 end_ <- Sys.time() 
 (time_ <- end_ - start_)
-
-ege <- as.data.frame(dt)
-
-write.table(file=paste0(tolower(model),".csv"), ege, sep = ";", quote = FALSE)
