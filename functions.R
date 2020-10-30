@@ -87,18 +87,7 @@ get_date <- function(html){
   }
   
   date_ <- as.Date(as.numeric(date_), origin = "1970-01-01")
-  
-  # date_ <- if(substr(date_,3,nchar(date_)-4) == "Ekim"){
-  #   as.Date(gsub("Ekim","-10-",date_), format = "%d-%m-%Y")
-  # }else if(substr(date_,3,nchar(date_)-4) == "Kasım"){
-  #   as.Date(gsub("Kasım","-11-",date_), format = "%d-%m-%Y")
-  # }else if(substr(date_,3,nchar(date_)-4) == "Eylül"){
-  #   as.Date(gsub("Eylül","-09-",date_), format = "%d-%m-%Y")
-  # }else if(substr(date_,3,nchar(date_)-4) == "Ağustos"){
-  #   as.Date(gsub("Ağustos","-08-",date_), format = "%d-%m-%Y")
-  # }else if(substr(date_,3,nchar(date_)-4) == "Haziran"){
-  #   as.Date(gsub("Haziran","-06-",date_), format = "%d-%m-%Y")
-  # }
+ 
   return(date_)
 }
 
