@@ -2,12 +2,15 @@ setwd("...") # set your working directory
 options(warn=-1)
 Sys.setlocale("LC_ALL", 'en_US.UTF-8')
 
-library(tidyverse)
-library(rvest)
-library(stringr)
-library(rebus)
-library(lubridate)
-require(dplyr)
+pck_ <- c("tidyverse","rvest","stringr","rebus","lubridate","dplyr")
+
+pck <- pck_[!(pck_ %in% installed.packages()[,"Package"])]
+if(length(pck)){
+  cat(paste0("Installing ", pck, "\n"))
+  install.packages(pck, repos = 'http://cran.us.r-project.org')
+} # if you don't have these packages, install them all
+
+suppressWarnings(suppressMessages(invisible(lapply(pck_, require, character.only = TRUE))))
 
 get_max_page <- function(html){
   max_page <- substr(as.character(html %>% html_nodes('.mbdef') %>% html_text() %>% unlist()), 
