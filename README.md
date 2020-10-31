@@ -1,4 +1,4 @@
-# sahi1000’den
+# sahi1000den
 This repository contains the web scraping methods for the second hand cars on www.sahibinden.com which is a well-known Turkish electronic second-hand market.
 
 ## Prerequisites
@@ -24,12 +24,13 @@ $ Rscript sahibinden.R
 ```
 
 Then it will ask the car brand and the model. Type them (it is not case-sensitive). Here is an example given:
+
 ```
 Please enter the brand: Toyota
 Please enter the model: Corolla
 
 [1] "Please wait! This process can take several minutes."
-This process took 20.15 seconds
+This process took 180.76 seconds
 
 Successful! Please locate the file here:
 /Users/Ege/sahibinden/data/camaro.csv
