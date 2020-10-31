@@ -3,8 +3,18 @@ start_ <- Sys.time()
 setwd("...") # set your working directory
 source("functions.R") # call the functions with functions.R file
 
-brand <- "Hyundai" # add brand
-model <- "Elantra" # add model
+# For regular usage, uncomment this and comment Terminal usage lines
+# brand <- "Car" # add brand
+# model <- "Model" # add model
+
+
+# For terminal usage on MacOS and Linux.
+cat("Please enter the brand: ");
+brand <- readLines("stdin",n=1);
+
+cat("Please enter the model: ");
+model <- readLines("stdin",n=1);
+
 
 
 url <- paste0("https://www.sahibinden.com/",tolower(brand),"-",tolower(model),"?viewType=Classic&pagingSize=50")
@@ -39,7 +49,7 @@ df_ <- df
 
 # late pages --------------------------------------------------------------
 
-max_page <- ifelse(max_page >= 20, 20, max_page)
+max_page <- ifelse(max_page >= 20, 20, max_page) # It can fetch maximum 1000 results.
 
 for(i in 2:max_page){
   url[i] <- paste0("https://www.sahibinden.com/",tolower(brand),"-",tolower(model),"?viewType=Classic&pagingOffset=",50*(i-1),"&pagingSize=50")
@@ -85,9 +95,13 @@ for(i in 1:length(url)){
 dt <- dplyr::data_frame(df_)
 dt <- dt[!duplicated(dt),]
 
+
 dt_out <- as.data.frame(dt)
 
 write.table(file=paste0(tolower(model),".csv"), dt_out, sep = ";", quote = FALSE)
 
 end_ <- Sys.time() 
-(time_ <- end_ - start_)
+time_ <- round(difftime(end_, start_, units='secs'),2)
+
+cat(paste0("This process took ", time_, " seconds\n\n"))
+cat(paste0("Successful! Please locate the file here:\n", getwd(),"/",paste0(tolower(model),".csv\n")))
