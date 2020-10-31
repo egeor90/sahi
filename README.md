@@ -1,7 +1,12 @@
 # sahi1000den
 This repository contains the web scraping methods for the second hand cars on www.sahibinden.com which is a well-known Turkish electronic second-hand market.
 
-## Prerequisites
+### Clone the repository
+```sh
+$ git clone https://github.com/egeor90/sahi.git && cd sahibinden
+```
+
+### Prerequisites
 This file will automatically install `tidyverse`, `rvest`, `stringr`, `rebus`, `lubridate`, `dplyr`, `here` packages. 
 If you have any trouble with installation of any package above, please make sure if required packages have been installed. You can install packages manually as follows.
 
@@ -17,7 +22,7 @@ $ sudo su - \
 ```
 
 
-## Using with Terminal (for MacOS & Linux)
+### Using with Terminal (for MacOS & Linux)
 
 ```sh
 $ cd "/path/to/file/"
