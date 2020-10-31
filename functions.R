@@ -1,7 +1,7 @@
 options(warn=-1)
 Sys.setlocale("LC_ALL", 'en_US.UTF-8')
 
-pck_ <- c("tidyverse", "rvest", "stringr", "rebus", "lubridate", "dplyr", "here")
+pck_ <- c("tidyverse", "rvest", "stringr", "rebus", "lubridate", "dplyr", "here", "stringr")
 
 pck <- pck_[!(pck_ %in% installed.packages()[,"Package"])]
 if(length(pck)){
