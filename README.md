@@ -1,7 +1,7 @@
 # sahi1000den
 This repository contains the web scraping methods for the second hand cars on www.sahibinden.com which is a well-known Turkish electronic second-hand market.
 
-### Clone the repository
+### Clone the repository (MacOS / Linux)
 ```sh
 $ git clone https://github.com/egeor90/sahi.git && cd sahibinden
 ```
