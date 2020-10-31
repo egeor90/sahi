@@ -26,6 +26,7 @@ brand <- readLines("stdin",n=1);
 cat("Please enter the model: ");
 model <- readLines("stdin",n=1);
 
+print("Please wait! This process may take several minutes.")
 
 
 url <- paste0("https://www.sahibinden.com/",tolower(brand),"-",tolower(model),"?viewType=Classic&pagingSize=50")
