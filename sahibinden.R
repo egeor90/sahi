@@ -109,7 +109,7 @@ dt <- dt[!duplicated(dt),]
 
 dt_out <- as.data.frame(dt)
 
-write.table(file=paste0(tolower(model),".csv"), dt_out, sep = ";", quote = FALSE)
+write.table(file=paste0("data/",tolower(model),".csv"), dt_out, sep = ";", quote = FALSE)
 
 end_ <- Sys.time() 
 time_ <- round(difftime(end_, start_, units='secs'),2)
