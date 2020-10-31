@@ -1,9 +1,20 @@
 start_ <- Sys.time()
 
-setwd("...") # set your working directory
+pck_ <- "here"
+pck <- pck_[!(pck_ %in% installed.packages()[,"Package"])]
+if(length(pck)){
+  cat(paste0("Installing: ", pck, "\n"))
+  install.packages(pck, repos = 'http://cran.us.r-project.org')
+}
+
+suppressWarnings(suppressMessages(invisible(lapply(pck_, require, character.only = TRUE))))
+
+
+setwd(here())
+
 source("functions.R") # call the functions with functions.R file
 
-# For regular usage, uncomment this and comment Terminal usage lines
+# For regular usage on script, uncomment following lines and comment Terminal usage lines!
 # brand <- "Car" # add brand
 # model <- "Model" # add model
 
