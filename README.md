@@ -2,7 +2,8 @@
 This repository contains the web scraping methods for the second hand cars on www.sahibinden.com which is a well-known Turkish electronic second-hand market.
 
 ## Prerequisites
-This file will automatically install `tidyverse`, `rvest`, `stringr`, `rebus`, `lubridate`, `dplyr`, `here` packages. If you have any trouble with them, please make sure if required packages have been installed. 
+This file will automatically install `tidyverse`, `rvest`, `stringr`, `rebus`, `lubridate`, `dplyr`, `here` packages. 
+If you have any trouble with installation of any package above, please make sure if required packages have been installed. You can install packages manually as follows.
 
 Install packages via Rscript:
 ```r
