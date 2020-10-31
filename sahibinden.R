@@ -116,4 +116,4 @@ end_ <- Sys.time()
 time_ <- round(difftime(end_, start_, units='secs'),2)
 
 cat(paste0("This process took ", time_, " seconds\n\n"))
-cat(paste0("Successful! Please locate the file here:\n", getwd(),"/",paste0(tolower(model),".csv\n")))
+cat(paste0("Successful! Please locate the file here:\n", getwd(),"/data/",paste0(tolower(model),".csv\n")))
