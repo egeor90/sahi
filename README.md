@@ -3,7 +3,7 @@ This repository contains the web scraping methods for the second hand cars on ww
 
 ### Clone the repository (MacOS / Linux)
 ```sh
-$ git clone https://github.com/egeor90/sahi.git && cd sahibinden
+$ git clone https://github.com/egeor90/sahi.git && cd sahi
 ```
 
 ### Prerequisites
