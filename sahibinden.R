@@ -26,10 +26,14 @@ brand <- readLines("stdin",n=1);
 cat("Please enter the model: ");
 model <- readLines("stdin",n=1);
 
+
+brand_ <- gsub("\ ", '-', brand, perl=T)
+model_ <- gsub("\ ", '-', model, perl=T)
+
 print("Please wait! This process may take several minutes.")
 
 
-url <- paste0("https://www.sahibinden.com/",tolower(brand),"-",tolower(model),"?viewType=Classic&pagingSize=50")
+url <- paste0("https://www.sahibinden.com/",tolower(brand_),"-",tolower(model_),"?viewType=Classic&pagingSize=50")
 html <- read_html(url)
 
 max_page <- get_max_page(html = html)
@@ -66,7 +70,7 @@ if(max_page <= 1 || length(max_page)==0){
   max_page <- ifelse(max_page >= 20, 20, max_page)
   
   for(i in 2:max_page){
-    url[i] <- paste0("https://www.sahibinden.com/",tolower(brand),"-",tolower(model),"?viewType=Classic&pagingOffset=",50*(i-1),"&pagingSize=50")
+    url[i] <- paste0("https://www.sahibinden.com/",tolower(brand_),"-",tolower(model_),"?viewType=Classic&pagingOffset=",50*(i-1),"&pagingSize=50")
   }
   
   url <- url[-1]
@@ -112,14 +116,16 @@ if(max_page <= 1 || length(max_page)==0){
 
 
 dt_out <- as.data.frame(dt)
-dt_out$brand <- str_to_title(brand)
+
+
+dt_out$brand <- ifelse(tolower(brand) == "bmw", "BMW", str_to_title(brand))
 dt_out$model <- str_to_title(model)
 
-write.table(file=paste0("data/",tolower(model),".csv"), dt_out, sep = ";", quote = FALSE)
+write.table(file=paste0("data/",tolower(model_),".csv"), dt_out, sep = ";", quote = FALSE)
 
 end_ <- Sys.time() 
 time_ <- round(difftime(end_, start_, units='secs'),2)
 
 system("clear")
 cat(paste0("This process took ", time_, " seconds\n\n"))
-cat(paste0("Successful! Please locate the file here:\n", getwd(),"/data/",paste0(tolower(model),".csv\n\n")))
+cat(paste0("Successful! Please locate the file here:\n", getwd(),"/data/",paste0(tolower(model_),".csv\n\n")))
