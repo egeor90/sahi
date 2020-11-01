@@ -112,6 +112,8 @@ if(max_page <= 1 || length(max_page)==0){
 
 
 dt_out <- as.data.frame(dt)
+dt_out$brand <- str_to_title(brand)
+dt_out$model <- str_to_title(model)
 
 write.table(file=paste0("data/",tolower(model),".csv"), dt_out, sep = ";", quote = FALSE)
 
