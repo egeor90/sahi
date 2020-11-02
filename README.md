@@ -39,5 +39,5 @@ Please enter the model: Corolla
 This process took 180.76 seconds
 
 Successful! Please locate the file here:
-/Users/Ege/sahibinden/data/camaro.csv
+/home/ege/sahibinden/data/toyota-corolla.csv
 ```
