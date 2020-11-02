@@ -121,11 +121,12 @@ dt_out <- as.data.frame(dt)
 dt_out$brand <- ifelse(tolower(brand) == "bmw", "BMW", str_to_title(brand))
 dt_out$model <- str_to_title(model)
 
-write.table(file=paste0("data/",tolower(model_),".csv"), dt_out, sep = ";", quote = FALSE)
+
+write.table(file=paste0("data/",tolower(brand_),"-",tolower(model_),".csv"), dt_out, sep = ";", quote = FALSE)
 
 end_ <- Sys.time() 
 time_ <- round(difftime(end_, start_, units='secs'),2)
 
 system("clear")
 cat(paste0("This process took ", time_, " seconds\n\n"))
-cat(paste0("Successful! Please locate the file here:\n", getwd(),"/data/",paste0(tolower(model_),".csv\n\n")))
+cat(paste0("Successful! Please locate the file here:\n", getwd(),"/data/",paste0(tolower(brand_),"-",tolower(model_),".csv\n\n")))
