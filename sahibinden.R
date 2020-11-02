@@ -13,6 +13,7 @@ suppressWarnings(suppressMessages(invisible(lapply(pck_, require, character.only
 setwd(here())
 
 source("functions.R") # call the functions with functions.R file
+system("clear")
 
 # For regular usage on script, uncomment following lines and comment Terminal usage lines!
 # brand <- "Car" # add brand
