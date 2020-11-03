@@ -36,7 +36,7 @@ Please enter the brand: Toyota
 Please enter the model: Corolla
 
 [1] "Please wait! This process can take several minutes."
-This process took 180.76 seconds
+This process took 180.76 seconds, with 983 results
 
 Successful! Please locate the file here:
 /home/ege/sahibinden/data/toyota-corolla.csv
