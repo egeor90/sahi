@@ -1,5 +1,5 @@
 # sahi1000den
-This repository contains the web scraping methods for the second hand cars on www.sahibinden.com which is a well-known Turkish electronic second-hand market.
+This repository contains the web scraping methods for the second hand cars on www.sahibinden.com which is a well-known Turkish electronic second-hand market. This tool can scrap last 1000 data.
 
 ### Clone the repository (MacOS / Linux)
 ```sh
