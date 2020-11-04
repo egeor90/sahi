@@ -108,3 +108,67 @@ get_location <- function(html){
   assign("location_city",location_city, envir = .GlobalEnv)
   assign("location_district",location_district, envir = .GlobalEnv)
 }
+
+
+car_train <- function(portion = 0.7, nround = 20000, output_file = "xgb.model"){
+
+  dt <- data.table::data.table(combine_all())
+  
+  dt <- dt[,-c(1,2,7,10)]
+  dt <- dt[which(dt$km >= 5000),]
+  dt <- dt[which(as.numeric(as.character(dt$year)) >= 2000),]
+  
+  dt$old <- as.numeric(Sys.Date()-dt$date)
+  dt <- dt[,-c("date")]
+  dt$year <- as.numeric(substr(Sys.Date(),1,4)) - as.numeric(as.character(dt$year))
+  
+  index_ <- sample(nrow(dt),replace = F)
+  index_train <- index_[1:round(0.7*length(index_))]
+  index_test <- index_[(round(0.7*length(index_))+1):length(index_)]
+  
+  dt <- data.frame(dt)[,c(4,1:3,5:ncol(dt))]
+  
+  trainset <- as.data.frame(dt[index_train,])
+  testset <- as.data.frame(dt[index_test,])
+  
+  xgb_train <- data.matrix(trainset)
+  xgb_test <- data.matrix(testset)
+  xgb_model <- xgboost(data = xgb_train[,-1], label = xgb_train[,1], nthread = 2, nrounds = nround, 
+                       early_stopping_rounds=100,
+                       # objective = "reg:linear", # deprecated
+                       objective = "reg:squarederror")
+  
+  pred_xgb_train <- unlist(predict(xgb_model,xgb_train[,-1]))
+  (rmse_xgb_train <- sqrt(colMeans((as.data.frame(xgb_train[,1])-pred_xgb_train)^2)))/mean(ege$price)
+
+  plot(pred_xgb_train, type = "p", main = "Train performance", ylab = "Training set")
+  lines(xgb_train[,1], type = "p", col = "red")
+  
+  pred_xgb <- unlist(predict(xgb_model,xgb_test[,-1]))
+  (rmse_xgb <- sqrt(colMeans((as.data.frame(xgb_test[,1])-pred_xgb)^2)))/mean(ege$price)
+  
+  plot(pred_xgb, type = "p", col = "red")
+  lines(xgb_test[,1], type = "p", main = "Test performance", ylab = "Test set")
+  
+  names <- dimnames(xgb_train[,-1])[[2]]
+  importance_matrix <- xgb.importance(names, model = xgb_model)
+  xgb.plot.importance(importance_matrix[1:20,])
+  
+  xgb.save(xgb_model, fname = output_file)
+}
+
+
+predict_car <- function(data, year, km, color, city, brand, model, ad_date){
+  xgb_model <- xgb.load(paste0(here(),'/data/xgb.model'))
+  
+  city <-  ifelse(city == "istanbul", "İstanbul", city)
+  deploy_values <- t(data.matrix(c(as.numeric(substr(Sys.Date(),1,4)) - as.numeric(year),
+                                   km, 
+                                   which(levels(data$color)==str_to_title(color)), 
+                                   which(levels(data$city)==str_to_title(city)), 
+                                   which(levels(data$brand)==str_to_title(brand)), 
+                                   which(levels(data$model)==str_to_title(model)), 
+                                   as.numeric(Sys.Date()-as.Date(ad_date)))))
+  
+  return(predict(xgb_model,deploy_values))  
+}
