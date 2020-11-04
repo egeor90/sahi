@@ -6,6 +6,7 @@ setwd(here())
 
 source("functions.R")
 
+
 # data preprocess
 dt <- data.table(combine_all())
 
@@ -22,6 +23,7 @@ dt$year <- as.numeric(substr(Sys.Date(),1,4)) - as.numeric(as.character(dt$year)
 # Deploy ------------------------------------------------------------------
 system("clear")
 
+# For manual usage, prediction please comment out following lines containing readLines function.
 cat("Brand: ");
 brand_ <- as.character(readLines("stdin",n=1))
 
@@ -52,21 +54,3 @@ predict_car(data = dt,
             brand = brand_,
             model = model_,
             ad_date = old_)
-
-
-# predict_car(data = dt,year = 2011,km = 170000,color = "Siyah",city = "Ankara",brand = "Toyota",
-#             model = "Corolla",
-#             ad_date = "2020-11-01")
-
-# pred_days <- NA
-# 
-# for(i in 1:90){
-#   pred_days[i] <- predict_car(data = dt, year = 2011, km = 76000, color = "Siyah", city = "Ankara",
-#                               brand = "Opel", model = "Corsa", ad_date = as.Date("2020-11-05")-i)
-# }
-# 
-# plot(pred_days, type = "l")
-# 
-# which.max(pred_days)
-# which.min(pred_days)
-# mean(pred_days)
