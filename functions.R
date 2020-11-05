@@ -12,7 +12,7 @@ if(length(pck)){
 
 suppressWarnings(suppressMessages(invisible(lapply(pck_, require, character.only = TRUE))))
 
-setwd(here())
+setwd(here::here())
 
 
 get_max_page <- function(html){
