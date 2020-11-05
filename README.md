@@ -26,7 +26,7 @@ $ sudo su - \
 ### Fetch data
 ```sh
 $ cd "/path/to/file/"
-$ Rscript sahibinden.R
+$ sudo Rscript sahibinden.R
 ```
 
 Then it will ask the car brand and the model. Type them (it is not case-sensitive). Here is an example given:
