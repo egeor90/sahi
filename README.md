@@ -44,18 +44,16 @@ Successful! Please locate the file here:
 
 ### Train xGBoost model
 ```sh
-$ cd "/path/to/file/"
 $ Rscript model_train.R
 ```
 
 
 ### Prediction of second-hand car price
 ```sh
-$ cd "/path/to/file/"
 $ Rscript predict.R
 ```
 
-Then fill the form in following way:
+Then fill the inputs in following way:
 ```sh
 Brand: Audi
 Model: A3
@@ -75,3 +73,31 @@ Parameters are not case sensitive. Parameter attributes are as follows:
 `Color`: Color of the car. Currently in Turkish.  
 `City`: City of selling.  
 `Old`: The date of publication. It should be in *YYYY-MM-DD* format. For instance, `2020-11-02`, `2020-10-30`.
+
+
+### Executable R files (MacOS & Linux)
+In order to get rid of `Rscript` command each time, you may add the path of Rscript to the beginning of each executable file. Firstly, you should follow the next steps:
+
+- Learn where is Rscript located:
+```sh
+$ which Rscript
+```
+
+This path is varying. In this example it is set as `/usr/local/bin/Rscript`.
+
+- Add this path to the first line of each R file in this directory:
+```r
+#!/usr/local/bin/Rscript
+```
+
+- Change the permission of each R file in this directory. Give execution rights:
+```sh
+$ sudo chmod +x *.R
+```
+
+- From now on, you can execute your R files without writing Rscript command at the beginning. These can work as follows:
+```sh
+$ ./sahibinden.R
+$ ./model_train.R
+$ ./predict.R
+```
