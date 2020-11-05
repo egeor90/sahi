@@ -178,13 +178,13 @@ car_train <- function(portion = 0.7, nround = 20000, output_file = "xgb.model"){
                        objective = "reg:squarederror")
   
   pred_xgb_train <- unlist(predict(xgb_model,xgb_train[,-1]))
-  (rmse_xgb_train <- sqrt(colMeans((as.data.frame(xgb_train[,1])-pred_xgb_train)^2)))/mean(ege$price)
+  (rmse_xgb_train <- sqrt(colMeans((as.data.frame(xgb_train[,1])-pred_xgb_train)^2)))/mean(dt$price)
 
   plot(pred_xgb_train, type = "p", main = "Train performance", ylab = "Training set")
   lines(xgb_train[,1], type = "p", col = "red")
   
   pred_xgb <- unlist(predict(xgb_model,xgb_test[,-1]))
-  (rmse_xgb <- sqrt(colMeans((as.data.frame(xgb_test[,1])-pred_xgb)^2)))/mean(ege$price)
+  (rmse_xgb <- sqrt(colMeans((as.data.frame(xgb_test[,1])-pred_xgb)^2)))/mean(dt$price)
   
   plot(pred_xgb, type = "p", col = "red")
   lines(xgb_test[,1], type = "p", main = "Test performance", ylab = "Test set")
