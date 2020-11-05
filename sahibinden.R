@@ -10,7 +10,7 @@ if(length(pck)){
 suppressWarnings(suppressMessages(invisible(lapply(pck_, require, character.only = TRUE))))
 
 
-setwd(here())
+setwd(here::here())
 
 source("functions.R") # call the functions with functions.R file
 system("clear")
