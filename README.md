@@ -75,7 +75,7 @@ Parameters are not case sensitive. Parameter attributes are as follows:
 `Old`: The date of publication. It should be in *YYYY-MM-DD* format. For instance, `2020-11-02`, `2020-10-30`.
 
 
-### Executable R files (MacOS & Linux)
+### Executable R files (Optional - MacOS & Linux)
 In order to get rid of `Rscript` command each time, you may add the path of Rscript to the beginning of each executable file. Firstly, you should follow the next steps:
 
 - Learn where is Rscript located:
