@@ -84,7 +84,7 @@ If you want to execute the code without writing `Rscript` command each time, you
 $ bash exec.sh
 ```
 
-- Then, check if R files in current working directory has the path for Rscript. In the first line of each file, there should exist a path like #!/usr/local/bin/Rscript:
+- Then, check if R files in current working directory has the path for Rscript. In the first line of each file, there should exist a path like `#!/usr/local/bin/Rscript`:
 
 ```sh
 $ cat functions.R | head -n5
@@ -93,21 +93,10 @@ $ cat model_train.R | head -n5
 $ cat sahibinden.R | head -n5
 ```
 
-- After you make sure that .R files contain the execution path of Rscript lines above, give the execution permission to the following files:
+- After you make sure that .R files contain the execution path of Rscript lines above, you can run each file as follows:
 
 ```sh
-$ sudo chmod +x exec.sh *.R
-```
-
-- Now, run executor.sh file.
-```sh
-$ ./exec.sh
-```
-
-- From now on you can run each file as follows:
-```sh
-$ ./functions.R
-$ ./predict.R
-$ ./model_train.R
 $ ./sahibinden.R
+$ ./model_train.R
+$ ./predict.R
 ```
