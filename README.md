@@ -78,32 +78,30 @@ Parameters are not case sensitive. Parameter attributes are as follows:
 ## Execution without `Rscript` command each time (optional - MacOS & Linux)
 If you want to execute the code without writing `Rscript` command each time, you may follow the next steps:
 
-- Create a file with a random name, such as `executor.sh`.
+- Run `exec.sh` file.
 
 ```sh
-$ vi executor.sh
+$ bash exec.sh
 ```
 
-- Then press `I` button and paste following lines into that file. 
+- Then, check if R files in current working directory has the path for Rscript. In the first line of each file, there should exist a path like #!/usr/local/bin/Rscript:
 
 ```sh
-echo '#!/usr/local/bin/Rscript' | cat - functions.R > temp && mv temp functions.R
-echo '#!/usr/local/bin/Rscript' | cat - predict.R > temp && mv temp predict.R
-echo '#!/usr/local/bin/Rscript' | cat - model_train.R > temp && mv temp model_train.R
-echo '#!/usr/local/bin/Rscript' | cat - sahibinden.R > temp && mv temp sahibinden.R
+$ cat functions.R | head -n5
+$ cat predict.R | head -n5
+$ cat model_train.R | head -n5
+$ cat sahibinden.R | head -n5
 ```
 
-- Press `:wq` and you'll have the file with above lines. You can check this file with `cat executor.sh`
-
-- After you make sure that your file contains the lines above, give the execution permission to the following files:
+- After you make sure that .R files contain the execution path of Rscript lines above, give the execution permission to the following files:
 
 ```sh
-$ sudo chmod +x executor.sh *.R
+$ sudo chmod +x exec.sh *.R
 ```
 
 - Now, run executor.sh file.
 ```sh
-$ ./executor.sh
+$ ./exec.sh
 ```
 
 - From now on you can run each file as follows:
