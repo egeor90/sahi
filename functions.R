@@ -6,7 +6,7 @@ pck_ <- c("tidyverse", "rvest", "stringr", "rebus", "lubridate", "dplyr", "here"
 pck <- pck_[!(pck_ %in% installed.packages()[,"Package"])]
 if(length(pck)){
   cat(paste0("Installing: ", pck, "\n"))
-  install.packages(pck, repos = 'http://cran.us.r-project.org')
+  install.packages(pck, repos = 'https://cran.rstudio.com')
 }
 
 
