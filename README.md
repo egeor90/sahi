@@ -46,8 +46,12 @@ Successful! Please locate the file here:
 $ Rscript model_train.R
 ```
 
+This file will produce `xgb.model` file as output in `data` directory.
+
 
 ### Prediction of second-hand car price
+Prediction works after `xgb.model` file exists in `data` directory. After you make sure that you have this file, you can run prediction as follows:
+
 ```sh
 $ Rscript predict.R
 ```
