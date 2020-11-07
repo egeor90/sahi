@@ -75,7 +75,7 @@ Parameters are not case sensitive. Parameter attributes are as follows:
 `Old`: The date of publication. It should be in *YYYY-MM-DD* format. For instance, `2020-11-02`, `2020-10-30`.
 
 
-### Execution without `Rscript` command each time (optional - MacOS & Linux)
+## Execution without `Rscript` command each time (optional - MacOS & Linux)
 If you want to execute the code without writing RScript each time, you may follow the next steps:
 
 - Create a file with a random name, such as `executor.sh`.
