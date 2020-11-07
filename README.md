@@ -75,29 +75,41 @@ Parameters are not case sensitive. Parameter attributes are as follows:
 `Old`: The date of publication. It should be in *YYYY-MM-DD* format. For instance, `2020-11-02`, `2020-10-30`.
 
 
-### Executable R files (Optional - MacOS & Linux)
-In order to get rid of `Rscript` command each time, you may add the path of Rscript to the beginning of each executable file. Firstly, you should follow the next steps:
+### Execution without `Rscript` (optional - MacOS & Linux)
+If you want to execute the code without writing RScript each time, you may follow the next steps:
 
-- Learn where is Rscript located:
+- Create a file with a random name, such as `executor.sh`.
+
 ```sh
-$ which Rscript
+$ vi executor.sh
 ```
 
-This path is varying. In this example it is set as `/usr/local/bin/Rscript`.
+- Then press `I` button and paste following lines into that file. 
 
-- Add this path to the first line of each R file in this directory:
-```r
-#!/usr/local/bin/Rscript
+```sh
+echo '#!/usr/local/bin/Rscript' | cat - functions.R > temp && mv temp functions.R
+echo '#!/usr/local/bin/Rscript' | cat - predict.R > temp && mv temp predict.R
+echo '#!/usr/local/bin/Rscript' | cat - model_train.R > temp && mv temp model_train.R
+echo '#!/usr/local/bin/Rscript' | cat - sahibinden.R > temp && mv temp sahibinden.R
 ```
 
-- Change the permission of each R file in this directory. Give execution rights:
+- Press `:wq` and you'll have the file with above lines. You can check this file with `cat executor.sh`
+
+- After you make sure that your file contains the lines above, give the execution permission to the following files:
+
 ```sh
-$ sudo chmod +x *.R
+$ sudo chmod +x executor.sh *.R
 ```
 
-- From now on, you can execute your R files without writing Rscript command at the beginning. These can work as follows:
+- Now, run executor.sh file.
 ```sh
-$ ./sahibinden.R
-$ ./model_train.R
+$ ./executor.sh
+```
+
+- From now on you can run each file as follows:
+```sh
+$ ./functions.R
 $ ./predict.R
+$ ./model_train.R
+$ ./sahibinden.R
 ```
