@@ -21,10 +21,10 @@ system("clear")
 
 
 # For terminal usage on MacOS and Linux.
-cat("Please enter the brand: ");
+cat("Enter the brand: ");
 brand <- readLines("stdin",n=1);
 
-cat("Please enter the model: ");
+cat("Enter the model: ");
 model <- readLines("stdin",n=1);
 
 
