@@ -24,6 +24,7 @@ $ sudo su - \
 ## Using with Terminal (for MacOS & Linux)
 
 ### Fetch data
+*Warning! Data can be fetched only in Turkey or with an IP, addressing Turkey. I am working on it to overcome the issue from abroad.*
 ```sh
 $ sudo Rscript sahibinden.R
 ```
@@ -93,9 +94,9 @@ This file also helps to give execution right to each R file.
 - Then, check if R files in current working directory has the path for Rscript. In the first line of each file, there should exist a path like `#!/usr/bin/Rscript`:
 
 ```sh
-$ cat predict.R | head -n5
-$ cat model_train.R | head -n5
 $ cat sahibinden.R | head -n5
+$ cat model_train.R | head -n5
+$ cat predict.R | head -n5
 ```
 
 - After you make sure that .R files contain the execution path of Rscript lines above, you can run each file as follows:
