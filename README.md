@@ -84,7 +84,10 @@ If you want to execute the code without writing `Rscript` command each time, you
 $ bash exec.sh
 ```
 
-- Then, check if R files in current working directory has the path for Rscript. In the first line of each file, there should exist a path like `#!/usr/local/bin/Rscript`:
+This can ask you the password as it requires to be run as administrator. Enter the login password and complete the process.
+This file also helps to give execution right to each R file.
+
+- Then, check if R files in current working directory has the path for Rscript. In the first line of each file, there should exist a path like `#!/usr/bin/Rscript`:
 
 ```sh
 $ cat functions.R | head -n5
