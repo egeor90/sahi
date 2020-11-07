@@ -76,7 +76,7 @@ Parameters are not case sensitive. Parameter attributes are as follows:
 
 
 ## Execution without `Rscript` command each time (optional - MacOS & Linux)
-If you want to execute the code without writing RScript each time, you may follow the next steps:
+If you want to execute the code without writing `Rscript` command each time, you may follow the next steps:
 
 - Create a file with a random name, such as `executor.sh`.
 
